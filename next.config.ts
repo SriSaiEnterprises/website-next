@@ -1,11 +1,9 @@
-// next.config.ts
 import { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   output: 'export', // Enable static export
   images: {
-    loader: 'custom', // Use a custom loader for static export
-    loaderFile: './my-loader.ts', // Path to your custom image loader
+    unoptimized: true, // Disable image optimization for static export
     remotePatterns: [
       {
         protocol: 'https',

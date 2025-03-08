@@ -14,4 +14,6 @@ export interface ProductFormData {
   description: string;
   category: string;
   image_url: string;
+  subcategory: string | null;
+  image_file?: File | null;
 }
