@@ -1,17 +1,18 @@
 "use client"; // Mark this as a Client Component
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { supabase } from '@/integrations/supabase/client';
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardHeader, CardContent, CardTitle, CardDescription } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { useAuth } from '@/context/AuthContext'; // Import useAuth
+import { useAuth } from "@/context/AuthContext"; // Import useAuth
 
 const AuthPage = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isSignUp, setIsSignUp] = useState(false);
   const router = useRouter();
@@ -29,10 +30,12 @@ const AuthPage = () => {
           email,
           password,
         });
+
         if (error) throw error;
+
         toast({
           title: "Success",
-          description: "Please check your email to verify your account",
+          description: "Please check your email to verify your account.",
         });
       } else {
         // Handle Sign In
@@ -40,18 +43,21 @@ const AuthPage = () => {
           email,
           password,
         });
+
         if (error) throw error;
 
         // Update authentication state
         setIsAuthenticated(true);
 
         // Redirect to the home page or admin page
-        router.push('/admin'); // Use router.push for navigation
+        router.push("/admin"); // Use router.push for navigation
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
+      // Handle errors safely
+      const errorMessage = error instanceof Error ? error.message : "An unknown error occurred.";
       toast({
         title: "Error",
-        description: error.message,
+        description: errorMessage,
         variant: "destructive",
       });
     } finally {
@@ -63,11 +69,11 @@ const AuthPage = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle>{isSignUp ? 'Create Account' : 'Sign In'}</CardTitle>
+          <CardTitle>{isSignUp ? "Create Account" : "Sign In"}</CardTitle>
           <CardDescription>
-            {isSignUp 
-              ? 'Create a new account to access the dashboard' 
-              : 'Sign in to your account to access the dashboard'}
+            {isSignUp
+              ? "Create a new account to access the dashboard."
+              : "Sign in to your account to access the dashboard."}
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -94,12 +100,8 @@ const AuthPage = () => {
                 required
               />
             </div>
-            <Button 
-              type="submit" 
-              className="w-full"
-              disabled={isLoading}
-            >
-              {isLoading ? 'Loading...' : (isSignUp ? 'Sign Up' : 'Sign In')}
+            <Button type="submit" className="w-full" disabled={isLoading}>
+              {isLoading ? "Loading..." : isSignUp ? "Sign Up" : "Sign In"}
             </Button>
           </form>
           <Button
@@ -107,8 +109,8 @@ const AuthPage = () => {
             className="w-full mt-4"
             onClick={() => setIsSignUp(!isSignUp)}
           >
-            {isSignUp 
-              ? 'Already have an account? Sign In' 
+            {isSignUp
+              ? "Already have an account? Sign In"
               : "Don't have an account? Sign Up"}
           </Button>
         </CardContent>

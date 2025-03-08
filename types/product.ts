@@ -1,12 +1,12 @@
-
 export interface Product {
   id: number;
   name: string;
-  description: string;
+  description: string | null;
   category: string;
+  subcategory: string | null;
   image_url: string;
-  created_at: string;
-  updated_at: string;
+  created_at: string | null;
+  updated_at: string | null;
 }
 
 export interface ProductFormData {

@@ -16,7 +16,8 @@ const Contact = () => {
     message: "",
   });
 
-  const handleSubmit = async (e) => {
+  // Add type for the event parameter
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { error } = await supabase
       .from("contact_submissions")

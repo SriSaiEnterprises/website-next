@@ -1,8 +1,8 @@
-// components/Review.tsx
 "use client"; // Mark as a Client Component
 
 import { motion, useInView, useAnimation } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
+import Image from 'next/image';
 
 const reviews = [
   {
@@ -65,7 +65,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ name, review, image }) => {
   return (
     <div className="bg-white p-6 rounded-lg shadow-lg flex-shrink-0 mx-8 w-[320px] min-h-[200px]" style={{ borderRadius: '15px' }}>
       <div className="flex items-center mb-4">
-        <img
+        <Image
           src={image}
           alt={`${name}'s profile`}
           width={48}
@@ -77,7 +77,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ name, review, image }) => {
         </h3>
       </div>
       <p className="text-gray-600 text-sm" style={{ color: '#302c2c' }}>
-        "{review}"
+        &quot;{review}&quot;
       </p>
     </div>
   );
@@ -151,7 +151,7 @@ const Reviews: React.FC = () => {
             >
               {[...clientLogos, ...clientLogos].map((logo, index) => (
                 <div key={index} className="flex-shrink-0 mx-6" style={{ width: '150px', height: '80px' }}>
-                  <img
+                  <Image
                     src={logo}
                     alt={`Client logo ${index + 1}`}
                     width={150}
@@ -173,7 +173,7 @@ const Reviews: React.FC = () => {
             initial={{ x: '0%' }}
             animate={controls}
             onUpdate={handleAnimationUpdate}
-            style={{ width: `${reviews.length * 40}%` }} 
+            style={{ width: `${reviews.length * 40}%` }}
           >
             {[...reviews, ...reviews].map((review, index) => (
               <ReviewCard key={index} name={review.name} review={review.review} image={review.image} />

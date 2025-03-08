@@ -16,7 +16,7 @@ const ProductDashboard = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedTab, setSelectedTab] = useState('products');
 
-  const categories = [...new Set(products.map(product => product.category))];
+  const categories = Array.from(new Set(products.map(product => product.category)));
   const filteredProducts = selectedCategory
     ? products.filter(product => product.category === selectedCategory)
     : products;

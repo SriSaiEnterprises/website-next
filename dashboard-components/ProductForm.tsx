@@ -3,7 +3,7 @@ import { Product, ProductFormData } from '@/types/product';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
+import { Textarea } from "@/dashboard-components/ui/textarea";
 import {
   Dialog,
   DialogContent,
@@ -31,7 +31,7 @@ export function ProductForm({ isOpen, onClose, onSubmit, product }: ProductFormP
     if (product) {
       setFormData({
         name: product.name,
-        description: product.description,
+        description: product.description ?? '', // Fallback to empty string if null
         category: product.category,
         image_url: product.image_url,
       });

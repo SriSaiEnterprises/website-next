@@ -1,7 +1,6 @@
 // app/(public)/page.tsx
 import { Suspense } from "react";
 import { Metadata } from "next";
-import { Phone } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";

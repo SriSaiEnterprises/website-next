@@ -3,8 +3,19 @@ import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { Table, TableHeader, TableBody, TableRow, TableCell } from '@/components/ui/table';
 
+// Define the Submission interface to match your Supabase table
+interface Submission {
+  id: number;
+  name: string;
+  email: string;
+  website: string | null; // Adjust based on your schema
+  phone: string | null; // Adjust based on your schema
+  message: string;
+  created_at: string | null; // Reflects Supabase nullable timestamp
+}
+
 const ContactSubmissions = () => {
-  const { data: submissions = [], isLoading } = useQuery({
+  const { data: submissions = [], isLoading } = useQuery<Submission[]>({
     queryKey: ['contact_submissions'],
     queryFn: async () => {
       const { data, error } = await supabase
@@ -41,10 +52,14 @@ const ContactSubmissions = () => {
           <TableRow key={submission.id}>
             <TableCell>{submission.name}</TableCell>
             <TableCell>{submission.email}</TableCell>
-            <TableCell>{submission.website}</TableCell>
-            <TableCell>{submission.phone}</TableCell>
+            <TableCell>{submission.website || 'N/A'}</TableCell>
+            <TableCell>{submission.phone || 'N/A'}</TableCell>
             <TableCell>{submission.message}</TableCell>
-            <TableCell>{new Date(submission.created_at).toLocaleString()}</TableCell>
+            <TableCell>
+              {submission.created_at
+                ? new Date(submission.created_at).toLocaleString()
+                : 'N/A'}
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>
@@ -52,4 +67,4 @@ const ContactSubmissions = () => {
   );
 };
 
-export default ContactSubmissions; 
+export default ContactSubmissions;

@@ -10,7 +10,8 @@ const Hero = () => {
   const router = useRouter(); // Use useRouter for navigation
   const [activeText, setActiveText] = useState(0);
   const texts = ['Corporate Gifting', 'Printing Solutions', 'Tech Products'];
-
+  console.log(activeText);
+  
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveText((prev) => (prev + 1) % texts.length);

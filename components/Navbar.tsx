@@ -72,7 +72,7 @@ const Navbar = () => {
               href="/contact"
               className="px-4 py-2 sm:px-6 sm:py-2 rounded-full border border-[#0E0E55] bg-white text-[#0E0E55] transition-all duration-300 ease-in-out hover:bg-[#0E0E55] hover:text-white animate-wiggle"
             >
-              Let's Talk
+              Let&apos;s Talk
             </Link>
           </div>
 
@@ -129,7 +129,7 @@ const Navbar = () => {
               className="block w-full px-6 py-2 rounded-full border transition-all duration-300 ease-in-out hover:bg-[#0E0E55] hover:text-white text-center animate-wiggle"
               onClick={() => setIsOpen(false)}
             >
-              Let's Talk
+              Let&apos;s Talk
             </Link>
           </div>
         )}

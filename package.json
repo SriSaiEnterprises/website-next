@@ -67,9 +67,19 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/react-modal": "^3.16.3",
-    "eslint": "^9",
+    "@typescript-eslint/eslint-plugin": "^8.26.0",
+    "@typescript-eslint/parser": "^8.26.0",
+    "eslint": "^9.22.0",
     "eslint-config-next": "15.2.1",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint"],
+    "extends": ["next/core-web-vitals", "plugin:@typescript-eslint/recommended"],
+    "rules": {
+      "@typescript-eslint/no-empty-object-type": "off"
+    }
   }
 }

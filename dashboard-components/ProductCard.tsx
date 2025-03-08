@@ -3,14 +3,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface ProductCardProps {
   product: Product;
-  onClick: () => void; // Add onClick prop
+  onClick?: () => void; // Make onClick optional with ?
 }
 
 export function ProductCard({ product, onClick }: ProductCardProps) {
   return (
     <Card 
       className="relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
-      onClick={onClick} // Add onClick handler
+      onClick={onClick} // Will only trigger if onClick is provided
     >
       {/* Image Container */}
       <div className="relative h-48 overflow-hidden">
