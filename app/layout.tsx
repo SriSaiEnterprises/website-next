@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 import { Providers } from "@/components/Provider";
 import { AuthProvider } from '@/context/AuthContext'; // Import AuthProvider
-import "../public/styles/globals.css";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Sri Sai Enterprises",
