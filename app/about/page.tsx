@@ -141,7 +141,7 @@ const About = () => {
             {/* Tech & Gadgets */}
             <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300">
               <Image
-                src="https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/tech&Gadgets.jpg"
+                src="https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/tech&gadgets.jpg"
                 alt="Tech & Gadgets"
                 className="w-full h-56 object-cover"
                 width={300}
