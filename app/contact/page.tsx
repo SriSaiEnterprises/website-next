@@ -5,7 +5,6 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { supabase } from "@/integrations/supabase/client";
 import Image from "next/image";
-import contactImage from '../../public/images/contact.jpg';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -191,7 +190,7 @@ const Contact = () => {
             </div>
             <div className="rounded-xl overflow-hidden shadow-lg transform hover:scale-[1.02] transition-transform duration-300">
               <Image
-                src={contactImage}
+                src="https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/contact.jpg"
                 alt="Contact Us"
                 className="w-full h-72 object-cover"
                 width={600}

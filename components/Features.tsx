@@ -1,4 +1,3 @@
-// components/Features.tsx
 "use client"; // Mark as a Client Component
 
 import React from 'react';
@@ -6,12 +5,9 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { useRouter } from 'next/navigation'; // Updated import
 import Image, { StaticImageData } from 'next/image';
-import gift from '@/public/images/gift.gif';
-import delivery from '@/public/images/delivery.gif';
-import teamwork from '@/public/images/teamwork.gif';
 
 interface CardProps {
-  icon: StaticImageData;
+  icon: StaticImageData | string; // Accept both local and remote images
   title: string;
   description: string;
   index: number;
@@ -62,7 +58,14 @@ const Card: React.FC<CardProps> = ({ icon, title, description, index }) => {
       className="flex flex-col items-start text-left p-6 bg-white rounded-lg shadow-lg w-full max-w-xs hover:shadow-xl transition-shadow duration-300"
       style={{ borderRadius: '15px' }}
     >
-      <Image src={icon} alt={`${title} icon`} width={64} height={64} className="w-16 h-16 mb-4 object-contain" />
+      {/* Use the `icon` prop directly */}
+      <Image
+        src={icon}
+        alt={`${title} icon`}
+        width={64}
+        height={64}
+        className="w-16 h-16 mb-4 object-contain"
+      />
       <h3 className="font-bold mb-2" style={{ fontSize: '18px', color: '#302c2c' }}>
         {title}
       </h3>
@@ -78,17 +81,17 @@ const GiftPlatform: React.FC = () => {
 
   const cards = [
     {
-      icon: gift,
+      icon: "https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/gift.gif", // Local image
       title: 'Thousands of Gifts',
       description: 'One vendor of record. Shop our business gift marketplace. We handle all sourcing, vetting, and compliance for you.',
     },
     {
-      icon: delivery,
+      icon: "https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/delivery.gif", // Local image
       title: 'Send to Hundreds at Once',
       description: 'State-of-the-art, multi-recipient checkout that makes it easy to send gifts in bulk.',
     },
     {
-      icon: teamwork,
+      icon: "https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/teamwork.gif", // Remote image URL
       title: 'Automate Employee Gifting',
       description: 'Set up gift workflows, milestones, and triggers once, then gifts go out automatically.',
     },

@@ -1,11 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
-import electronics from '../../public/images/electronics.jpg';
-import techAndgadgets from '../../public/images/tech&Gadgets.jpg';
-import corporateGift from '../../public/images/corporate_gifts.jpg';
-import printing from '../../public/images/printing.jpg';
-import group from '../../public/images/group.jpg';
 import Link from "next/link";
 
 const About = () => {
@@ -49,7 +44,7 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="rounded-xl overflow-hidden shadow-lg transform hover:scale-[1.02] transition-transform duration-300">
               <Image
-                src={group}
+                src="https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/group.jpg"
                 alt="Our Team"
                 className="w-full h-full object-cover"
                 width={600}
@@ -94,7 +89,7 @@ const About = () => {
             {/* Corporate Gifting */}
             <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300">
               <Image
-                src={corporateGift}
+                src="https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/corporate_gifts.jpg"
                 alt="Corporate Gifting"
                 className="w-full h-56 object-cover"
                 width={300}
@@ -120,7 +115,7 @@ const About = () => {
             {/* Printing Solutions */}
             <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300">
               <Image
-                src={printing}
+                src="https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/printing.jpg"
                 alt="Printing Solutions"
                 className="w-full h-56 object-cover"
                 width={300}
@@ -146,7 +141,7 @@ const About = () => {
             {/* Tech & Gadgets */}
             <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300">
               <Image
-                src={techAndgadgets}
+                src="https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/tech&Gadgets.jpg"
                 alt="Tech & Gadgets"
                 className="w-full h-56 object-cover"
                 width={300}
@@ -172,7 +167,7 @@ const About = () => {
             {/* Electronic Items */}
             <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300">
               <Image
-                src={electronics}
+                src="https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/electronics.jpg"
                 alt="Electronic Items"
                 className="w-full h-56 object-cover"
                 width={300}

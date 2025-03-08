@@ -55,7 +55,7 @@ const Footer = () => {
             <div className="mt-6 text-center">
               <div className="flex justify-center">
                 <Image 
-                  src="/images/whatsapp.png" 
+                  src="https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/whatsapp.png" 
                   alt="WhatsApp QR Code" 
                   width={96} 
                   height={96} 

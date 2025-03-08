@@ -78,7 +78,7 @@ const Hero = () => {
             }}
           />
           <Image
-            src="/images/heroImg10.png"
+            src="https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/heroImg10.jpg"
             alt="Corporate Gifting Adventure"
             width={800}
             height={800}

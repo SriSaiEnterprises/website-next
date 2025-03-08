@@ -8,51 +8,51 @@ const reviews = [
   {
     name: 'Priya',
     review: 'I was skeptical about online gifting platforms, but this exceeded my expectations. The personalized options and timely delivery won me over!',
-    image: '/images/girl.avif',
+    image: 'https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/girl.avif',
   },
   {
     name: 'Rahul ',
     review: 'Used it for our company’s employee appreciation program. The bulk ordering system is a lifesaver, though tracking could be a bit smoother.',
-    image: '/images/boy.avif',
+    image: 'https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/boy.avif',
   },
   {
     name: 'Anjali M',
     review: 'The corporate gifting options are fantastic! We used it for Diwali gifts, and our clients loved the thoughtful choices. Highly recommend!',
-    image: '/images/girl2.avif',
+    image: 'https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/girl2.avif',
   },
   {
     name: 'Vikram R',
     review: 'Great platform for corporate gifting. The team was very responsive, and the gifts were delivered on time. Perfect for our annual client appreciation event.',
-    image: '/images/boy2.webp',
+    image: 'https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/boy2.webp',
   },
   {
     name: 'Neha ',
     review: 'We used this service for our year-end employee rewards. The customization options made it easy to add a personal touch. Everyone loved their gifts!',
-    image: '/images/girl3.webp',
+    image: 'https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/girl3.webp',
   },
   {
     name: 'Arjun P',
     review: 'Excellent service! The platform is user-friendly, and the gifts are high-quality. Our clients were thrilled with the Diwali hampers.',
-    image: '/images/boy3.webp',
+    image: 'https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/boy3.webp',
   },
   {
     name: 'Sneha T',
     review: 'The best corporate gifting platform we’ve used. The gifts are unique, and the delivery is always on time. Perfect for our corporate events.',
-    image: '/images/girl4.png',
+    image: 'https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/girl4.png',
   },
   {
     name: 'Rajesh',
     review: 'We’ve been using this service for years for our corporate gifting needs. The quality and service are consistently excellent.',
-    image: '/images/oldman.avif',
+    image: 'https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/oldman.avif',
   },
 ];
 
 const clientLogos = [
-  '/images/Equal-experts.webp',
-  '/images/TaeguTec.png',
-  '/images/zeno.png',
-  '/images/transNeuron.gif',
-  '/images/relics.png',
+  'https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/Equal-experts.webp',
+  'https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/TaeguTec.png',
+  'https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/zeno.png',
+  'https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/transNeuron.gif',
+  'https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/relics.png',
 ];
 
 interface ReviewCardProps {

@@ -17,7 +17,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
             <Image
-              src="/images/logo.jpg"
+              src="https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/logo.jpg"
               alt="Sri Sai Enterprises Logo"
               width={56}
               height={56}

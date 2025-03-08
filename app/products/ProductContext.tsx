@@ -8,51 +8,31 @@ import Modal from "react-modal";
 import { Menu, X, ChevronDown, ChevronUp } from "lucide-react";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { Product } from "@/types/product";
 
-// Import GIFs for subcategories
-import bagGif from "@/public/images/bag.gif";
-import capGif from "@/public/images/cap.gif";
-import dairyGif from "@/public/images/diary.gif";
-import comboSetsGif from "@/public/images/combo-sets.png";
-import giftBoxGif from "@/public/images/gift.gif";
-import hoodiesGif from "@/public/images/hoodie.gif";
-import keyChainsGif from "@/public/images/keyChain.gif";
-import laptopSleeveGif from "@/public/images/laptopSleeve.png";
-import metalVisitingCardsGif from "@/public/images/card.gif";
-import mugsGif from "@/public/images/mugs.gif";
-import penGif from "@/public/images/pen.gif";
-import tShirtsGif from "@/public/images/tshirt.gif";
-import trolleyGif from "@/public/images/trolley.gif";
-import trophiesGif from "@/public/images/trophy.gif";
-import waterBottleGif from "@/public/images/water-bottle.gif";
-import printingSolutionsGif from "@/public/images/printer.gif";
-import techGadgetsGif from "@/public/images/tech.gif";
-import electronicsGif from "@/public/images/electronics.gif";
-
-const PRODUCTS_PER_PAGE = 20;
+const PRODUCTS_PER_PAGE = 10;
 
 // Map subcategories to their respective GIFs
-const subcategoryGifs: { [key: string]: StaticImageData } = {
-  "Bags": bagGif,
-  "Caps": capGif,
-  "Dairy": dairyGif,
-  "Combo Sets": comboSetsGif,
-  "Gift Box": giftBoxGif,
-  "Hoodies": hoodiesGif,
-  "Key Chains": keyChainsGif,
-  "Laptop Sleeve": laptopSleeveGif,
-  "Metal Visiting Cards": metalVisitingCardsGif,
-  "Mugs": mugsGif,
-  "Pen": penGif,
-  "T Shirts": tShirtsGif,
-  "Trolley": trolleyGif,
-  "Trophies": trophiesGif,
-  "Water Bottle": waterBottleGif,
-  "Printing Solutions": printingSolutionsGif,
-  "Tech & Gadgets": techGadgetsGif,
-  "Electronics": electronicsGif,
+const subcategoryGifs: { [key: string]: string } = {
+  "Bags": "https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/bag.gif",
+  "Caps": "https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/cap.gif",
+  "Dairy": "https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/diary.gif",
+  "Combo Sets": "https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/combo-sets.png",
+  "Gift Box": "https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/gift.gif",
+  "Hoodies": "https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/hoodie.gif",
+  "Key Chains": "https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/keyChain.gif",
+  "Laptop Sleeve": "https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/laptopSleeve.png",
+  "Metal Visiting Cards": "https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/card.gif",
+  "Mugs": "https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/mugs.gif",
+  "Pen": "https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/pen.gif",
+  "T Shirts": "https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/tshirt.gif",
+  "Trolley": "https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/trophy.gif",
+  "Trophies": "https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/trophy.gif",
+  "Water Bottle": "https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/water-bottle.gif",
+  "Printing Solutions": "https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/printer.gif",
+  "Tech & Gadgets": "https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/tech.gif",
+  "Electronics": "https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/electronics.gif",
 };
 
 const ProductsContent = () => {
@@ -247,7 +227,7 @@ const ProductsContent = () => {
     <div className="flex-1">
       <div className="relative w-full h-[400px] pt-24">
         <Image
-          src="/images/products1.jpg"
+          src="https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/products1.jpg"
           alt="Products Background"
           fill
           className="object-cover object-right"
@@ -404,7 +384,7 @@ const ProductsContent = () => {
                           onClick={() => router.push(`/products?category=${category}&subcategory=${subcategory}`)}
                         >
                           <Image
-                            src={subcategoryGifs[subcategory] || bagGif} // Fallback to bagGif if GIF not found
+                            src={subcategoryGifs[subcategory]}
                             alt={`${subcategory} icon`}
                             width={16}
                             height={16}
