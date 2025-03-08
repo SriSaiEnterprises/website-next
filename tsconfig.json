@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "es5", // Use es5 for broader compatibility
+    "lib": ["dom", "dom.iterable", "esnext"], // Include necessary libraries
+    "allowJs": true, // Allow JavaScript files
+    "skipLibCheck": true, // Skip library checks
+    "strict": true, // Enable all strict type-checking options
+    "noEmit": true, // Do not emit JavaScript files
+    "esModuleInterop": true, // Enable ES module interop
+    "module": "esnext", // Use ES modules
+    "moduleResolution": "node", // Use Node.js-style module resolution
+    "resolveJsonModule": true, // Allow importing JSON files
+    "isolatedModules": true, // Ensure each file is a separate module
+    "jsx": "preserve", // Preserve JSX syntax
+    "incremental": true, // Enable incremental compilation
+    "baseUrl": ".", // Base directory for path resolution
+    "paths": {
+      "@/*": ["./*"] // Map @/* to the root directory
+    },
+    "plugins": [
+      {
+        "name": "next" // Enable Next.js TypeScript plugin
+      }
+    ]
+  },
+  "include": [
+    "next-env.d.ts", // Include Next.js type definitions
+    "**/*.ts", // Include all TypeScript files
+    "**/*.tsx", // Include all TypeScript JSX files
+    ".next/types/**/*.ts" // Include Next.js generated types
+  ],
+  "exclude": [
+    "node_modules" // Exclude node_modules directory
+  ]
+} 
