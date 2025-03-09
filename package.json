@@ -53,6 +53,7 @@
     "react-day-picker": "^9.5.1",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.54.2",
+    "react-hot-toast": "^2.5.2",
     "react-modal": "^3.16.3",
     "react-resizable-panels": "^2.1.7",
     "react-toast": "^1.0.3",
@@ -76,8 +77,13 @@
   },
   "eslintConfig": {
     "parser": "@typescript-eslint/parser",
-    "plugins": ["@typescript-eslint"],
-    "extends": ["next/core-web-vitals", "plugin:@typescript-eslint/recommended"],
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "extends": [
+      "next/core-web-vitals",
+      "plugin:@typescript-eslint/recommended"
+    ],
     "rules": {
       "@typescript-eslint/no-empty-object-type": "off"
     }

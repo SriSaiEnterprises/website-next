@@ -62,7 +62,6 @@ const Gallery = () => {
       results.push(data as Product[]);
     }
 
-    console.log("Featured Products:", results);
     setFeaturedProducts(results);
   };
 
@@ -123,7 +122,7 @@ const Gallery = () => {
                     loading="lazy"
                     onError={(e) => {
                       console.error("Error loading image:", e);
-                      e.currentTarget.src = "/fallback-image.png"; // Fallback image
+                      e.currentTarget.src = "https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/fallback_image.webp"; // Fallback image
                     }}
                   />
                   <div
@@ -170,7 +169,7 @@ const Gallery = () => {
               className="w-full h-auto object-contain"
               onError={(e) => {
                 console.error("Error loading selected image:", e);
-                e.currentTarget.src = "/fallback-image.png"; // Fallback image
+                e.currentTarget.src = "https://wshuzhrqeawdphkftpoa.supabase.co/storage/v1/object/public/images/static/fallback_image.webp"; // Fallback image
               }}
             />
             <button

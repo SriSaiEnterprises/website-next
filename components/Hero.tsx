@@ -1,4 +1,3 @@
-// components/Hero.tsx
 "use client"; // Mark as a Client Component
 
 import { useEffect, useState } from 'react';
@@ -10,8 +9,7 @@ const Hero = () => {
   const router = useRouter(); // Use useRouter for navigation
   const [activeText, setActiveText] = useState(0);
   const texts = ['Corporate Gifting', 'Printing Solutions', 'Tech Products'];
-  console.log(activeText);
-  
+
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveText((prev) => (prev + 1) % texts.length);
@@ -35,6 +33,11 @@ const Hero = () => {
           Discover premium corporate gifts, innovative printing solutions, and cutting-edge tech
           products. Shop directly from our site to impress clients.
         </p>
+
+        {/* Rotating Text Section */}
+        <div className="text-xl font-semibold mb-6" style={{ color: '#0E0E55' }}>
+          {texts[activeText]}
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           <button
