@@ -250,7 +250,7 @@ const ProductsContent = () => {
                   {" → "}
                   <span
                     className="cursor-pointer hover:underline"
-                    onClick={() => router.push(`/products?category=${currentCategory}`)}
+                    onClick={() => router.push(`/products?category=${encodeURIComponent(currentCategory)}`)}
                   >
                     {currentCategory}
                   </span>
@@ -259,7 +259,7 @@ const ProductsContent = () => {
                       {" → "}
                       <span
                         className="cursor-pointer hover:underline"
-                        onClick={() => router.push(`/products?category=${currentCategory}&subcategory=${currentSubcategory}`)}
+                        onClick={() => router.push(`/products?category=${encodeURIComponent(currentCategory)}&subcategory=${encodeURIComponent(currentSubcategory)}`)}
                       >
                         {currentSubcategory}
                       </span>
@@ -276,7 +276,7 @@ const ProductsContent = () => {
                     className={`px-3 py-1 rounded hover:bg-gray-700 ${
                       currentCategory === category ? "font-extrabold" : ""
                     }`}
-                    onClick={() => router.push(`/products?category=${category}`)}
+                    onClick={() => router.push(`/products?category=${encodeURIComponent(category)}`)}
                   >
                     {category}
                   </span>
@@ -286,7 +286,7 @@ const ProductsContent = () => {
                         <div
                           key={subcategory}
                           className="p-2 hover:bg-gray-100 cursor-pointer text-gray-900"
-                          onClick={() => router.push(`/products?category=${category}&subcategory=${subcategory}`)}
+                          onClick={() => router.push(`/products?category=${encodeURIComponent(category)}&subcategory=${encodeURIComponent(subcategory)}`)}
                         >
                           {subcategory}
                         </div>
@@ -311,7 +311,7 @@ const ProductsContent = () => {
                       currentCategory === category ? "font-bold" : ""
                     }`}
                     onClick={() => {
-                      router.push(`/products?category=${category}`);
+                      router.push(`/products?category=${encodeURIComponent(category)}`);
                       setIsMenuOpen(false);
                     }}
                   >
@@ -324,7 +324,7 @@ const ProductsContent = () => {
                           key={subcategory}
                           className="text-sm text-gray-700 hover:text-gray-900 cursor-pointer"
                           onClick={() => {
-                            router.push(`/products?category=${category}&subcategory=${subcategory}`);
+                            router.push(`/products?category=${encodeURIComponent(category)}&subcategory=${encodeURIComponent(subcategory)}`);
                             setIsMenuOpen(false);
                           }}
                         >
@@ -369,7 +369,7 @@ const ProductsContent = () => {
                     className={`cursor-pointer py-2 px-3 rounded-md ${
                       currentCategory === category && !currentSubcategory ? "bg-[#0E0E55] text-white" : "hover:bg-gray-100"
                     }`}
-                    onClick={() => router.push(`/products?category=${category}`)}
+                    onClick={() => router.push(`/products?category=${encodeURIComponent(category)}`)}
                   >
                     {category}
                   </div>
@@ -381,7 +381,7 @@ const ProductsContent = () => {
                           className={`cursor-pointer py-1 px-3 flex items-center gap-2 rounded-md text-sm ${
                             currentSubcategory === subcategory ? "bg-[#0E0E55] text-white" : "hover:bg-gray-100"
                           }`}
-                          onClick={() => router.push(`/products?category=${category}&subcategory=${subcategory}`)}
+                          onClick={() => router.push(`/products?category=${encodeURIComponent(category)}&subcategory=${encodeURIComponent(subcategory)}`)}
                         >
                           <Image
                             src={subcategoryGifs[subcategory]}
