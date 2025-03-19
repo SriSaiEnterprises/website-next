@@ -36,13 +36,8 @@ const ProductDashboard = () => {
     setSelectedProduct(null);
   };
 
-  const handleSubmit = (formData: ProductFormData) => {
-    if (selectedProduct) {
-      updateProduct({ id: selectedProduct.id, data: formData });
-    } else {
-      createProduct(formData);
-    }
-    handleCloseDialog();
+  const handleDeleteProduct = async (productId: number) => {
+    await deleteProduct(productId); // Call the deleteProduct function from useProducts
   };
 
   if (isLoading) {
@@ -123,6 +118,7 @@ const ProductDashboard = () => {
                 key={product.id} 
                 product={product} 
                 onClick={() => handleOpenDialog(product)} // Open dialog for editing
+                onDelete={handleDeleteProduct} // Pass delete handler
               />
             ))}
           </div>
@@ -135,7 +131,6 @@ const ProductDashboard = () => {
       <ProductForm
         isOpen={isDialogOpen}
         onClose={handleCloseDialog}
-        onSubmit={handleSubmit}
         product={selectedProduct || undefined}
       />
     </div>

@@ -16,11 +16,10 @@ import { supabase } from '@/integrations/supabase/client'; // Ensure Supabase cl
 interface ProductFormProps {
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: (data: ProductFormData) => void;
   product?: Product;
 }
 
-export function ProductForm({ isOpen, onClose, onSubmit, product }: ProductFormProps) {
+export function ProductForm({ isOpen, onClose, product }: ProductFormProps) {
   const [formData, setFormData] = useState<ProductFormData>({
     name: '',
     description: '',
@@ -29,6 +28,9 @@ export function ProductForm({ isOpen, onClose, onSubmit, product }: ProductFormP
     image_url: '',
     image_file: null,
   });
+
+  const [isSubmitting, setIsSubmitting] = useState(false); // Track submission state
+  const [error, setError] = useState<string | null>(null); // Track errors
 
   useEffect(() => {
     if (product) {
@@ -55,56 +57,73 @@ export function ProductForm({ isOpen, onClose, onSubmit, product }: ProductFormP
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Upload image file if exists
-    let imageUrl = formData.image_url;
-    if (formData.image_file) {
-      const fileExt = formData.image_file.name.split('.').pop();
-      const fileName = `${Math.random()}.${fileExt}`;
-      const filePath = `${formData.category}/${formData.subcategory || 'uncategorized'}/${fileName}`;
+    if (isSubmitting) return; // Prevent multiple submissions
+    setIsSubmitting(true);
+    setError(null); // Reset error state
 
-      // Upload the image to the 'images' bucket
-      const { error: uploadError } = await supabase.storage
-        .from('images')
-        .upload(filePath, formData.image_file);
+    console.log('Form submission started'); // Debug log
 
-      if (uploadError) {
-        console.error('Error uploading image:', uploadError);
-        return;
+    try {
+      // Upload image file if exists
+      let imageUrl = formData.image_url;
+      if (formData.image_file) {
+        console.log('Uploading image file...'); // Debug log
+
+        const fileExt = formData.image_file.name.split('.').pop();
+        const fileName = `${Math.random()}.${fileExt}`;
+        const filePath = `${formData.category}/${formData.subcategory || 'uncategorized'}/${fileName}`;
+
+        // Upload the image to the 'images' bucket
+        const { error: uploadError } = await supabase.storage
+          .from('images')
+          .upload(filePath, formData.image_file);
+
+        if (uploadError) {
+          throw new Error(`Error uploading image: ${uploadError.message}`);
+        }
+
+        console.log('Image uploaded successfully'); // Debug log
+
+        // Get the public URL of the uploaded image
+        const { data: urlData } = supabase.storage
+          .from('images')
+          .getPublicUrl(filePath);
+
+        imageUrl = urlData.publicUrl;
+        console.log('Image URL:', imageUrl); // Debug log
       }
 
-      // Get the public URL of the uploaded image
-      const { data: urlData } = supabase.storage
-        .from('images')
-        .getPublicUrl(filePath);
+      // Prepare the product data to be inserted into the `products` table
+      const productData = {
+        name: formData.name,
+        description: formData.description,
+        category: formData.category,
+        subcategory: formData.subcategory || null, // Use null if subcategory is empty
+        image_url: imageUrl,
+      };
 
-      imageUrl = urlData.publicUrl;
+      console.log('Inserting product data:', productData); // Debug log
+
+      // Insert the product data into the `products` table
+      const { data, error: insertError } = await supabase
+        .from('products')
+        .insert([productData])
+        .select(); // Use `.select()` to return the inserted data (optional)
+
+      if (insertError) {
+        throw new Error(`Error inserting product: ${insertError.message}`);
+      }
+
+      console.log('Product inserted successfully:', data); // Debug log
+      // Close the dialog
+      onClose();
+    } catch (err) {
+      console.error('Error during form submission:', err); // Debug log
+      setError(err instanceof Error ? err.message : 'An unexpected error occurred.');
+    } finally {
+      setIsSubmitting(false); // Reset submission state
+      console.log('Form submission completed'); // Debug log
     }
-
-    // Prepare the product data to be inserted into the `products` table
-    const productData = {
-      name: formData.name,
-      description: formData.description,
-      category: formData.category,
-      subcategory: formData.subcategory || null, // Use null if subcategory is empty
-      image_url: imageUrl,
-    };
-
-    // Insert the product data into the `products` table
-    const { data, error } = await supabase
-      .from('products')
-      .insert([productData])
-      .select(); // Use `.select()` to return the inserted data (optional)
-
-    if (error) {
-      console.error('Error inserting product:', error);
-      return;
-    }
-
-    // Call the `onSubmit` prop with the inserted product data
-    onSubmit(productData);
-
-    // Close the dialog
-    onClose();
   };
 
   return (
@@ -165,12 +184,17 @@ export function ProductForm({ isOpen, onClose, onSubmit, product }: ProductFormP
               required={!formData.image_url}
             />
           </div>
+          {error && (
+            <div className="text-red-500 text-sm">
+              {error}
+            </div>
+          )}
           <div className="flex justify-end space-x-2 pt-4">
-            <Button variant="outline" type="button" onClick={onClose}>
+            <Button variant="outline" type="button" onClick={onClose} disabled={isSubmitting}>
               Cancel
             </Button>
-            <Button type="submit">
-              {product ? 'Update' : 'Create'}
+            <Button type="submit" disabled={isSubmitting}>
+              {isSubmitting ? 'Submitting...' : (product ? 'Update' : 'Create')}
             </Button>
           </div>
         </form>
